@@ -1,0 +1,6 @@
+services:
+  backuppc:
+    # Required for rootless container runtimes (e.g. Podman or Docker rootless)
+    # to allow ICMP (ping) by granting NET_RAW capability
+    cap_add:
+     - NET_RAW
