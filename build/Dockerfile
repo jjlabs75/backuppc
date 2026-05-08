@@ -14,7 +14,6 @@ LABEL maintainer="Jj Labs"
 LABEL description="BackupPC on Debian ${DEBIAN_VERSION}"
 
 # ── Environment variables ───────────────────────────────────────────
-ENV ROOTLESS_RUNTIME=false
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TEMPLATE_DIR=/opt/app/template
 
