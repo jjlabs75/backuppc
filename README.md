@@ -100,12 +100,26 @@ Persistent paths:
 <br>
 
 ### For rootless container runtime like podman or docker in rootless mode
+If you encounter the following errors while running the container in rootless mode (Podman, Docker rootless, etc.):
+
+- `no ping response from srv-target1`
+- `can't ping srv-target1 (client = srv-target1); exiting`
+
+Please enable the provided Docker Compose override file for rootless environments.
+
 ```bash
 cp docker-compose.override.yml.example docker-compose.override.yml
 ```
 
-The override file adds the `NET_RAW` capability to the container.<br>
-Also set variable `ROOTLESS_RUNTIME` to `true`.
+The override file adds the `NET_RAW` capability to the container.<br><br>
+
+Also set `ROOTLESS_RUNTIME=true` in the `.env` file.<br>
+
+Restart the container
+
+```bash
+sudo docker compose up -d
+```
 
 ---
 
@@ -136,7 +150,7 @@ sudo docker compose logs backuppc | grep -A5 "Public key"
 sudo docker compose exec -it backuppc su - backuppc -c "ssh-copy-id target-user@target-server"
 ```
 
-Or manually copy the public SSH server key `id_ed25519.pub` to the target host at `/home/{userName}/.ssh/authorized_keys`.
+Or manually copy the public SSH server key `id_ed25519.pub` to the target host at `/home/{userName}/.ssh/authorized_keys.
 
 <br>
 
